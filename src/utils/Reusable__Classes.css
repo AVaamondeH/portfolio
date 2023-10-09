@@ -35,3 +35,26 @@
     font-size: var(--smaller-font-size);
     color: var(--text-color-light);
 }
+
+    /*============= BUTTONS ============= */ 
+/*! pasar a home.module.css si no se usara mas */
+.button {
+    display: inline-block;
+    background-color: var(--first-color);
+    color: var(--body-color);
+    padding: .75rem 1rem;
+    border-radius: .5rem;
+    font-weight: var(--font-medium);
+    transition: .4s;
+}
+
+.button:hover {
+    background-color: var(--first-color-alt);
+    color: var(--body-color);
+}
+
+.button__ghost {
+    background-color: transparent;
+    border-color: 2px var(--first-color);
+    color: var(--first-color);
+}

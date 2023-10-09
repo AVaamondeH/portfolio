@@ -13,15 +13,15 @@ function Home() {
                         <h3 className={style.home__education} >Web Developer</h3>
 
                         <div className={style.home__buttons}>
-                            <a download="" href="../../assets/CV.pdf" className={`button ${style.button__ghost}`} >
+                            <a download="" href="../../assets/CV.pdf" className={`button button__ghost`} >
                                 Download CV
                             </a>
-                            <a href="#about">About me</a>
+                            <a href="#about" className={`button`}>About me</a>
                         </div>
                     </div>
 
                     <div className={style.home__handle}>
-                        <img src="../../../public/assets/Tbg2.jpg" alt="" className={style.home__img} />
+                        <img src="/assets/Tbg2.png" alt="" className={style.home__img} />
                     </div>
 
                     <div className={style.home__social}>
