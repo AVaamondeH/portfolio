@@ -25,14 +25,13 @@ function Home() {
                     </div>
 
                     <div className={style.home__social}>
-                        <a href="https://www.linkedin.com/in/alexxvaam/" className={style.home__social__link} >
+                        <a href="https://www.linkedin.com/in/alexxvaam/" target="_blank" className={style.home__social__link} rel="noreferrer" >
                             <box-icon size='md' name='linkedin-square' type='logo' color='#8057BF' animation="tada-hover" ></box-icon>
                         </a>
-                        <a href="https://github.com/AVaamondeH" className={style.home__social__link} >
+                        <a href="https://github.com/AVaamondeH" target="_blank" className={style.home__social__link} rel="noreferrer" >
                             <box-icon size='md' name='github' type='logo' color='#8057BF' animation="tada-hover" ></box-icon>
                         </a>
                     </div>
-
 
                 </div>
             </section>
