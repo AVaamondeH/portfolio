@@ -1,6 +1,6 @@
 @import url("./utils/variables.css");
 
-body,
+.app,
 button,
 input,
 textarea {
@@ -11,6 +11,7 @@ textarea {
 body {
     background-color: var(--body-color);
     scroll-behavior: smooth;
+    transition: .4s;
 }
 
 h1,
@@ -55,4 +56,19 @@ img {
 
 ::-webkit-scrollbar-thumb:hover {
     background-color: hsl(var(--second-hue), 8%, 20%);
+}
+
+/*============= LIGHT THEME ============= */
+
+.light::-webkit-scrollbar {
+    background-color: hsl(var(--second-hue), 8%, 66%);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--second-hue), 8%, 54%);
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--second-hue), 8%, 44%);
 }

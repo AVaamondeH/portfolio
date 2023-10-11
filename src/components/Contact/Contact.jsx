@@ -1,12 +1,14 @@
 import style from "./Contact.module.css";
 import "../../utils/Reusable__Classes.css";
 import "boxicons";
-
+import { useSelector } from 'react-redux'
 
 function Contact() {
+    const { theme } = useSelector(state => state.theme);
+
     return (
-        <main className="main">
-            <section className={`${style.contact} section`} >
+        <main className="main"> 
+            <section className={`${style.contact} section ${theme ? style.light : ''}`} >
                 <span className={`section__subtitle`}>Get in touch</span>
                 <h2 className={`section__title`}>Contact Me</h2>
 

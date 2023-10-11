@@ -1,11 +1,14 @@
 import style from "./Home.module.css";
 import "../../utils/Reusable__Classes.css";
 import "boxicons";
+import { useSelector } from 'react-redux'
 
 function Home() {
+    const { theme } = useSelector(state => state.theme);
+
     return (
         <main className="main">
-            <section className={`${style.home} section`} >
+            <section className={`${style.home} section ${theme ? style.light : ''}`} >
                 <div className={`${style.home__container} container grid`}>
                     <div className={style.home__data} >
                         <span className={style.home__greeting}>{`Hello I'm`}</span>

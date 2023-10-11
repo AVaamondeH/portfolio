@@ -58,3 +58,14 @@
     border-color: 2px var(--first-color);
     color: var(--first-color);
 }
+
+/*============= LIGHT THEME ============= */ 
+
+body.light .section__subtitle {
+    color: var(--text-color);
+}
+
+body.light .button,
+body.light .button:hover {
+    color: var(--title-color);
+}

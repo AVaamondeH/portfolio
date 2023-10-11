@@ -21,6 +21,7 @@
     padding: 1rem;
     border-radius: .75rem;
     text-align: center;
+    transition: .4s;
 }
 
 .contact__card__title,
@@ -75,6 +76,7 @@
     padding: .25rem;
     background-color: var(--body-color);
     z-index: 10;
+    transition: .4s;
 }
 
 .contact__form__area {
@@ -83,4 +85,10 @@
 
 .contact__form__area textarea {
     resize: none;
+}
+
+/*============= LIGHT THEME ============= */
+
+.light .contact__card {
+    box-shadow: 0 2px 16px hsla(var(--second-hue), 48%, 8%, .1);
 }

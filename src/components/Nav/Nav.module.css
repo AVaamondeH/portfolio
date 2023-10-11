@@ -7,6 +7,7 @@
     width: 100%;
     background-color: var(--body-color);
     z-index: var(--z-fixed);
+    transition: .4s;
 }
 
 .nav {
@@ -33,6 +34,7 @@
     width: 90%;
     border-radius: 4rem;
     padding: 1rem 2.25rem;
+    transition: .4s;
 }
 
 .nav__list {
@@ -55,4 +57,14 @@
                 hsla(var(--first-hue), var(--sat), var(--lig), .2)
                 );
                 box-shadow: 0 0 16px hsla(var(--first-hue), var(--sat), var(--lig), .4);
+}
+
+/*============= LIGHT THEME ============= */ 
+
+.light .scroll__header {
+    box-shadow: 0 2px 4px hsla(0, 0, 1%, .1);
+}
+
+.light .nav__menu {
+    background-color: hsla(var(--second-hue), 32%, 90%, .8);
 }

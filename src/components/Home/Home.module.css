@@ -73,6 +73,7 @@ padding-top: 2rem;
     border-radius: .25rem;
     display: flex;
     font-size: 1rem;
+    transition: .4s;
 }
 
 .home__social__link:hover {
@@ -86,4 +87,14 @@ padding-top: 2rem;
     height: 2px;
     background-color: var(--first-color);
     transform: rotate(90deg) translate(16px, -5px);
+}
+
+/*============= LIGHT THEME ============= */ 
+
+.light .home__social__link {
+    box-shadow: 0 2px 8px hsla(var(--second-hue), 48%, 8%, .1);
+}
+
+.light .home__social::after {
+    background-color: var(--title-color);
 }

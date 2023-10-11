@@ -2,13 +2,31 @@ import style from "./Nav.module.css";
 import "../../utils/Reusable__Classes.css";
 import { NavLink, useLocation } from "react-router-dom";
 import "boxicons";
+import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { changeTheme } from "../../Redux/themeSlice";
 
 function Nav() {
     const location = useLocation()
-    
-    return ( 
+    const dispatch = useDispatch()
+    const { theme } = useSelector(state => state.theme)
+    const [icon, setIcon] = useState("sun");
+
+    const toggleTheme = () => {
+        theme === "" ? (
+            document.body.className = "light",
+            dispatch(changeTheme('light'))
+        ) : (
+            document.body.className = '',
+            dispatch(changeTheme(''))
+        );
+        setIcon(theme === '' ? 'sun' : 'moon');
+    }
+
+
+    return (
         <header className={style.header}>
-            <nav className={`${style.nav} container`} >
+            <nav className={`${style.nav} container ${theme ? style.light : ''}`} >
                 <a href="#" className={style.nav__logo}>Alex</a>
 
                 <div className={style.nav__menu}>
@@ -46,11 +64,13 @@ function Nav() {
                 </div>
 
                 {/* Theme Change */}
-                <box-icon name='moon' color='#ffffff' ></box-icon>
+                <div onClick={toggleTheme}>
+                    <box-icon name={icon} color='#ffffff' ></box-icon>
+                </div>
 
             </nav>
         </header>
-     );
+    );
 }
 
 export default Nav;

@@ -24,6 +24,7 @@
     background-color: var(--container-color);
     padding: 1rem;
     border-radius: 1rem;
+    transition: .4s;
 }
 
 .work__img {
@@ -48,4 +49,14 @@
 .active__work {
     background-color: var(--first-color);
     color: var(--body-color);
+}
+
+/*============= LIGHT THEME ============= */ 
+
+.light .work__card {
+    box-shadow: 0 2px 16px hsla(var(--second-hue), 48%, 8%, .1);
+}
+
+.light .active__work {
+    color: var(--title-color);
 }

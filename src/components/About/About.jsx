@@ -2,11 +2,14 @@ import style from "./About.module.css";
 import "../../utils/Reusable__Classes.css";
 import "boxicons";
 import { NavLink, } from "react-router-dom";
+import { useSelector } from 'react-redux'
 
 function About() {
+    const { theme } = useSelector(state => state.theme);
+
     return (
         <main className="main">
-            <section className={`${style.about} section`} >
+            <section className={`${style.about} section ${theme ? style.light : ''}`} >
                 <span className={`section__subtitle`}>My Intro</span>
                 <h2 className={`section__title`}>About Me</h2>
 

@@ -9,6 +9,7 @@
     background-color: var(--container-color);
     padding: 1.5rem;
     border-radius: 1.25rem;
+    transition: .4s;
 }
 
 .skills__title {
@@ -49,4 +50,10 @@
 
 .skills__level {
     font-size: var(--tiny-font-size);
+}
+
+/*============= LIGHT THEME ============= */ 
+
+.light .skills__content {
+    box-shadow: 0 2px 16px hsla(var(--second-hue), 48%, 8%, .1);
 }

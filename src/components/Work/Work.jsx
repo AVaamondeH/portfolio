@@ -1,12 +1,14 @@
 import style from "./Work.module.css";
 import "../../utils/Reusable__Classes.css";
 import "boxicons";
-
+import { useSelector } from 'react-redux'
 
 function Work() {
+    const { theme } = useSelector(state => state.theme);
+
     return (
         <main className="main">
-            <section className={`${style.work} section`} >
+            <section className={`${style.work } section ${theme ? style.light : ''}`} >
                 <span className={`section__subtitle`}>My Portfolio</span>
                 <h2 className={`section__title`}>Recent Works</h2>
 
