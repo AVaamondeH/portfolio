@@ -57,3 +57,39 @@
 .light .skills__content {
     box-shadow: 0 2px 16px hsla(var(--second-hue), 48%, 8%, .1);
 }
+
+/*============= BREAKPOINTS ============= */ 
+    /*============= Small divices ============= */ 
+    @media screen and (max-width: 320px){
+        .skills__box {
+            column-gap: .2rem;
+        }
+
+        .skills__name {
+            font-size: var(--small-font-size);
+        }
+
+        .skills__container {
+            margin-bottom: 4rem;
+        }
+    }
+    /*============= medium divices ============= */
+    @media screen and (min-width: 576px) {
+        .skills__container {
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .skills__content {
+            padding: 2rem 4rem;
+        }
+    }
+    /*============= Large divices ============= */
+    @media screen and (min-width: 992px) {
+
+        .skills__container {
+            margin-top: 8rem;
+            grid-template-columns: repeat(2, 350px);
+            column-gap: 3rem;
+        }
+    }

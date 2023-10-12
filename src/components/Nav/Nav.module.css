@@ -53,13 +53,12 @@
 
 .active__link {
     background: linear-gradient(180deg,
-                hsla(var(--first-hue), var(--sat), var(--lig), 1),
-                hsla(var(--first-hue), var(--sat), var(--lig), .2)
-                );
-                box-shadow: 0 0 16px hsla(var(--first-hue), var(--sat), var(--lig), .4);
+            hsla(var(--first-hue), var(--sat), var(--lig), 1),
+            hsla(var(--first-hue), var(--sat), var(--lig), .2));
+    box-shadow: 0 0 16px hsla(var(--first-hue), var(--sat), var(--lig), .4);
 }
 
-/*============= LIGHT THEME ============= */ 
+/*============= LIGHT THEME ============= */
 
 .light .scroll__header {
     box-shadow: 0 2px 4px hsla(0, 0, 1%, .1);
@@ -67,4 +66,30 @@
 
 .light .nav__menu {
     background-color: hsla(var(--second-hue), 32%, 90%, .8);
+}
+
+/*============= BREAKPOINTS ============= */
+/*============= Small divices ============= */
+
+@media screen and (max-width: 320px) {
+    .nav__menu {
+        padding: .5rem 1.5rem;
+    }
+}
+
+/*============= medium divices ============= */
+@media screen and (min-width: 576px) {
+    .nav__menu {
+        width: 328px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+}
+
+/*============= Large divices ============= */
+@media screen and (min-width: 992px) {
+    .nav {
+        height: calc(--header-height) + 1rem;
+    }
 }
