@@ -23,12 +23,6 @@ function Contact() {
 
     const { name, email, message } = form;
 
-    const encode = (data) => {
-        return Object.keys(data)
-            .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-            .join("&");
-    }
-
     useEffect(() => {
         theme ? setColor(black) : setColor(white);
     }, [white, black, theme]);
@@ -51,11 +45,8 @@ function Contact() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await axios.post("/", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: encode({ "form-name": "contact", form })
-        })
+        await axios.post("/", form)
+        
     }
 
     return (
@@ -104,7 +95,7 @@ function Contact() {
                         <div className={style.contact__content}>
                             <h3 className={style.contact__title}>{language === "spanish" ? `Cuentame lo que deseas realizar` : `Write me your project`}</h3>
 
-                            <form className={style.contact__form} name="contact" onSubmit={handleSubmit}>
+                            <form className={style.contact__form} name="contact" onSubmit={handleSubmit} data-netlify="true">
                                 <div className={style.contact__form__div}>
                                     <label htmlFor="" className={style.contact__form__tag}>{language === "spanish" ? `Nombres` : `Names`}</label>
                                     <input name="name" type="text" value={name} onChange={handleChange} placeholder={language === "spanish" ? `Escribe tu nombre` : `Insert your name`} className={style.contact__form__input} />
