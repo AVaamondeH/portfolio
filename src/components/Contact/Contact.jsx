@@ -108,7 +108,7 @@ function Contact() {
                             <form className={style.contact__form} name="contact" onSubmit={handleSubmit} netlify>
                                 <div className={style.contact__form__div}>
                                     <label htmlFor="" className={style.contact__form__tag}>{language === "spanish" ? `Nombres` : `Names`}</label>
-                                    <input name="name" type="text" value={name} onChange={handleChange} placeholder={language === "spanish" ? `Escribe tu nombre` : `Insert your name`} className={style.contact__form__input} />
+                                    <input name="name" type="hidden" value={name} onChange={handleChange} placeholder={language === "spanish" ? `Escribe tu nombre` : `Insert your name`} className={style.contact__form__input} />
                                 </div>
 
                                 <div className={style.contact__form__div}>
