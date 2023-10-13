@@ -36,6 +36,11 @@ function Contact() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isInView]);
 
+    const encode = (data) => {
+        return Object.keys(data)
+            .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+            .join("&");
+    }
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -48,10 +53,25 @@ function Contact() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const encode = (data) => {
-            return Object.keys(data)
-                .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-                .join("&");
+        if( name === "" || !email || !message) {
+            language === "spanish" ? (
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Verifica que todos los campos requeridos esten llenos',
+                    background: theme ? white : dark_bg,
+                    color: theme ? black : white,
+                })
+            ) : (
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "You can't have empty fields",
+                    background: theme ? white : dark_bg,
+                    color: theme ? black : white,
+                })
+            )
+            return;
         }
         const formData = {
             "form-name": "contact",

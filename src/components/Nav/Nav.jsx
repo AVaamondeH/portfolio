@@ -55,7 +55,6 @@ function Nav() {
     }
     const onClick__es_MX = () => {
         if (language != "spanish") {
-            console.log("aja");
             dispatch(changeLanguage("spanish"))
         }
     }
