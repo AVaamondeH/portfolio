@@ -7,6 +7,7 @@ const initialState = {
         black: "#000",
         white: "#f2f2f2",
         light: "#A395E9",
+        dark_bg: "#0b111e",
     }
 }
 

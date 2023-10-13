@@ -5,6 +5,7 @@ import "boxicons";
 import { useSelector } from 'react-redux'
 import { useEffect, useRef, useState } from 'react'
 import { motion, useInView, useAnimation } from 'framer-motion';
+import Swal from 'sweetalert2'
 import axios from "axios"
 
 
@@ -13,7 +14,7 @@ function Contact() {
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true });
     const mainControls = useAnimation();
-    const { white, black, } = colors
+    const { white, black,dark_bg, } = colors
     const [color, setColor] = useState(white);
     const { language } = useSelector(state => state.language)
     const [form, setForm] = useState({
@@ -35,7 +36,7 @@ function Contact() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isInView]);
 
-    
+
     const handleChange = (event) => {
         const { name, value } = event.target;
 
@@ -44,7 +45,7 @@ function Contact() {
             [name]: value,
         })
     }
-    
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const encode = (data) => {
@@ -59,16 +60,62 @@ function Contact() {
             message
         };
         const encodedData = encode(formData);
-        console.log(encodedData);
         try {
-            const response = await axios.post("/", encodedData, {
+            await axios.post("/", encodedData, {
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
                 }
             });
-    
-            console.log("Respuesta:", response.data);
+            language === "spanish" ? (
+                Swal.fire({
+                    title: "Gracias!",
+                    html: "Tu mensaje fue enviado con exito!",
+                    icon: 'success',
+                    background: theme ? white : dark_bg,
+                    color: theme ? black : white,
+                }).then(function () {
+
+                    setForm({
+                        name: "",
+                        email: "",
+                        message:"",
+                    });
+                })
+            ) : (
+                Swal.fire({
+                    title: "Thank You!",
+                    html: "Your message was send successfully!",
+                    icon: 'success',
+                    background: theme ? white : dark_bg,
+                    color: theme ? black : white,
+                }).then(function () {
+
+                    setForm({
+                        name: "",
+                        email: "",
+                        message:"",
+                    });
+                })
+            )
+
         } catch (error) {
+            language === "spanish" ? (
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Algo paso enviando tu mensaje, intentalo mas tarde',
+                    background: theme ? white : dark_bg,
+                    color: theme ? black : white,
+                })
+            ) : (
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong, try again later',
+                    background: theme ? white : dark_bg,
+                    color: theme ? black : white,
+                })
+            )
 
             console.error("Error al enviar el formulario:", error);
         }
