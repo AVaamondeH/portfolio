@@ -52,14 +52,11 @@ function Contact() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await fetch("/", {
+        await axios.post("/", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: encode({ "form-name": "contact", form })
         })
-            .then(() => alert("Success!"))
-            .catch(error => alert(error));
-
     }
 
     return (
