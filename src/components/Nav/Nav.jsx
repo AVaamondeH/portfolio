@@ -5,18 +5,36 @@ import "boxicons";
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeTheme } from "../../Redux/themeSlice";
+import { US, MX } from 'country-flag-icons/react/3x2'
+import { changeLanguage } from "../../Redux/languageSlice";
 
 function Nav() {
     const location = useLocation()
     const dispatch = useDispatch()
     const { theme, colors } = useSelector(state => state.theme);
-    const {white, black, } = colors
+    const { white, black, } = colors
     const [color, setColor] = useState(white);
     const [icon, setIcon] = useState("sun");
+    const { language } = useSelector(state => state.language)
 
     useEffect(() => {
         theme ? setColor(black) : setColor(white);
     }, [white, black, theme]);
+
+    useEffect(() => {
+        const setTheme = localStorage.getItem("theme");
+        const setLanguage = localStorage.getItem("language");
+        if (setTheme) {
+            dispatch(changeTheme(setTheme))
+            document.body.className = "light"
+        }
+
+        if (setLanguage) {
+            dispatch(changeLanguage(setLanguage))
+        }
+        setIcon(setTheme === '' ? 'moon' : 'sun');
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const toggleTheme = () => {
         theme === "" ? (
@@ -29,11 +47,26 @@ function Nav() {
         setIcon(theme === '' ? 'sun' : 'moon');
     }
 
+    const onClick__en_US = () => {
+        if (language != "english") {
+            dispatch(changeLanguage("english"))
+        }
+
+    }
+    const onClick__es_MX = () => {
+        if (language != "spanish") {
+            console.log("aja");
+            dispatch(changeLanguage("spanish"))
+        }
+    }
+
 
     return (
         <header className={style.header}>
             <nav className={`${style.nav} container ${theme ? style.light : ''}`} >
-                <a href="#" className={style.nav__logo}>Alex</a>
+                <NavLink to="/" >
+                    <img src="/assets/logo.png" alt="" className={style.nav__logo} />
+                </NavLink>
 
                 <div className={style.nav__menu}>
                     <ul className={style.nav__list}>
@@ -70,8 +103,12 @@ function Nav() {
                 </div>
 
                 {/* Theme Change */}
-                <div onClick={toggleTheme}>
-                    <box-icon name={icon} color={color} size ="sm" ></box-icon>
+                <div className={style.nav__change}>
+                    <US onClick={onClick__en_US} title="United States" className={style.nav__change__icons} />
+                    <MX onClick={onClick__es_MX} title="Mexico" className={style.nav__change__icons} />
+                    <div onClick={toggleTheme}>
+                        <box-icon name={icon} color={color} size="sm" ></box-icon>
+                    </div>
                 </div>
 
             </nav>

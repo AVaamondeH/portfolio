@@ -9,12 +9,8 @@ const initialState = {
         light: "#A395E9",
     }
 }
-// --first-color: hsl(var(--first-hue), var(--sat), var(--lig)) se traduciría a #438cb5.
 
-// --first-color-alt: hsl(var(--first-hue), var(--sat), 71%) se traduciría a #4088b5.
-
-
-export const counterSlice = createSlice({
+export const themeSlice = createSlice({
     name: 'counter',
     initialState,
     reducers: {
@@ -24,9 +20,9 @@ export const counterSlice = createSlice({
     },
 })
 
-// Action creators are generated for each case reducer function
-export const { theme } = counterSlice.actions
-export default counterSlice.reducer
+export const { theme } = themeSlice.actions
+export default themeSlice.reducer
 export const changeTheme = (data) => async (dispatch) => {
-        dispatch(theme(data));
+    localStorage.setItem("theme", data)
+    dispatch(theme(data));
 };

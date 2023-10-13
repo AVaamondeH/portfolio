@@ -57,6 +57,7 @@
     background-color: transparent;
     border-color: 2px var(--first-color);
     color: var(--first-color);
+    border: 2px solid;
 }
 
 /*============= LIGHT THEME ============= */ 

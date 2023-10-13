@@ -12,6 +12,7 @@ function Work() {
     const isInView = useInView(ref, { once: true });
     const mainControls = useAnimation();
     const [filter, setFilter] = useState("all");
+    const { language } = useSelector(state => state.language)
 
     useEffect(() => {
         if (isInView) {
@@ -37,13 +38,13 @@ function Work() {
                 transition={{ duration: 0.5, delay: 0.25, }}
             >
                 <section className={`${style.work} section ${theme ? style.light : ''}`} >
-                    <span className={`section__subtitle`}>My Portfolio</span>
-                    <h2 className={`section__title`}>Recent Works</h2>
+                    <span className={`section__subtitle`}>{ language === "spanish" ? `Mi Portafolio` : `My Portfolio` }</span>
+                    <h2 className={`section__title`}>{ language === "spanish" ? `Trabajos Recientes` : `Recent Works` }</h2>
 
                     <div className={style.work__filters}>
-                        <span id="all" onClick={() => onClick("all")} className={`${style.work__item} ${filter === 'all' ? style.active__work : ''}`}>All</span>
-                        <span onClick={() => onClick("app")} className={`${style.work__item} ${filter === 'app' ? style.active__work : ''}`}>Web App</span>
-                        <span onClick={() => onClick("temp")} className={`${style.work__item} ${filter === 'temp' ? style.active__work : ''}`}>Web Template</span>
+                        <span id="all" onClick={() => onClick("all")} className={`${style.work__item} ${filter === 'all' ? style.active__work : ''}`}>{ language === "spanish" ? `Todo` : `All` }</span>
+                        <span onClick={() => onClick("app")} className={`${style.work__item} ${filter === 'app' ? style.active__work : ''}`}>{ language === "spanish" ? `Aplicacion Web` : `Web App` }</span>
+                        <span onClick={() => onClick("temp")} className={`${style.work__item} ${filter === 'temp' ? style.active__work : ''}`}>{ language === "spanish" ? `Plantilla Web` : `Web Template` }</span>
                     </div>
 
                     <div className={`${style.work__container} container grid`}>

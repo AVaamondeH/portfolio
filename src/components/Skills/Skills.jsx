@@ -11,6 +11,7 @@ function Skills() {
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true });
     const mainControls = useAnimation();
+    const { language } = useSelector(state => state.language)
 
     useEffect(() => {
         if (isInView) {
@@ -32,8 +33,8 @@ function Skills() {
                 transition={{ duration: 0.5, delay: 0.25, }}
             >
                 <section className={`${style.skills} section ${theme ? style.light : ''}`} >
-                    <span className={`section__subtitle`}>My abilities</span>
-                    <h2 className={`section__title`}>My Experiences</h2>
+                    <span className={`section__subtitle`}>    { language === "spanish" ? `Mis Habilidades` : `My abilities` }</span>
+                    <h2 className={`section__title`}>    { language === "spanish" ? `Mi Experiencia` : `My Experiences` }</h2>
 
                     <div className={`${style.skills__container} container grid`}>
                         <div className={style.skills__content}>
@@ -41,15 +42,15 @@ function Skills() {
 
                             <div className={style.skills__box}>
                                 <div className={style.skills__group}>
-                                    <Skills__data__card data={{ name: "HTML", level: "Intermediate", icon: "html5", type: "logo" }} />
-                                    <Skills__data__card data={{ name: "CSS", level: "Intermediate", icon: "css3", type: "logo" }} />
-                                    <Skills__data__card data={{ name: "Javascript", level: "Intermediate", icon: "javascript", type: "logo" }} />
+                                    <Skills__data__card data={{ name: "HTML", level: language === "spanish" ? `Intermedio` : `Intermediate` , icon: "html5", type: "logo" }} />
+                                    <Skills__data__card data={{ name: "CSS", level: language === "spanish" ? `Intermedio` : `Intermediate`, icon: "css3", type: "logo" }} />
+                                    <Skills__data__card data={{ name: "Javascript", level: language === "spanish" ? `Intermedio` : `Intermediate`, icon: "javascript", type: "logo" }} />
                                 </div>
 
                                 <div className={style.skills__group}>
-                                    <Skills__data__card data={{ name: "React", level: "Intermediate", icon: "react", type: "logo" }} />
-                                    <Skills__data__card data={{ name: "Redux", level: "Intermediate", icon: "redux", type: "logo" }} />
-                                    <Skills__data__card data={{ name: "Tailwind", level: "Basic", icon: "tailwind-css", type: "logo" }} />
+                                    <Skills__data__card data={{ name: "React", level: language === "spanish" ? `Intermedio` : `Intermediate`, icon: "react", type: "logo" }} />
+                                    <Skills__data__card data={{ name: "Redux", level: language === "spanish" ? `Intermedio` : `Intermediate`, icon: "redux", type: "logo" }} />
+                                    <Skills__data__card data={{ name: "Tailwind", level: language === "spanish" ? `Basico` : `Basic`, icon: "tailwind-css", type: "logo" }} />
                                 </div>
                             </div>
                         </div>
@@ -59,15 +60,15 @@ function Skills() {
 
                             <div className={style.skills__box}>
                                 <div className={style.skills__group}>
-                                    <Skills__data__card data={{ name: "NodeJs", level: "Intermediate", icon: "nodejs", type: "logo" }} />
-                                    <Skills__data__card data={{ name: "Express", level: "Intermediate", icon: "badge-check", type: "solid" }} />
-                                    <Skills__data__card data={{ name: "Python", level: "Basic", icon: "python", type: "logo" }} />
+                                    <Skills__data__card data={{ name: "NodeJs", level: language === "spanish" ? `Intermedio` : `Intermediate`, icon: "nodejs", type: "logo" }} />
+                                    <Skills__data__card data={{ name: "Express", level: language === "spanish" ? `Intermedio` : `Intermediate`, icon: "badge-check", type: "solid" }} />
+                                    <Skills__data__card data={{ name: "Python", level: language === "spanish" ? `Basico` : `Basic`, icon: "python", type: "logo" }} />
                                 </div>
 
                                 <div className={style.skills__group}>
-                                <Skills__data__card data={{ name: "PostgreSQL", level: "Intermediate", icon: "postgresql", type: "logo" }} />
-                                    <Skills__data__card data={{ name: "Sequelize", level: "Intermediate", icon: "badge-check", type: "solid" }} />
-                                    <Skills__data__card data={{ name: "MongoDB", level: "Basic", icon: "mongodb", type: "logo" }} />
+                                <Skills__data__card data={{ name: "PostgreSQL", level: language === "spanish" ? `Intermedio` : `Intermediate`, icon: "postgresql", type: "logo" }} />
+                                    <Skills__data__card data={{ name: "Sequelize", level: language === "spanish" ? `Intermedio` : `Intermediate`, icon: "badge-check", type: "solid" }} />
+                                    <Skills__data__card data={{ name: "MongoDB", level: language === "spanish" ? `Basico` : `Basic`, icon: "mongodb", type: "logo" }} />
 
                                 </div>
                             </div>

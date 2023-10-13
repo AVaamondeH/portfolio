@@ -4,10 +4,12 @@ import "boxicons";
 import { useSelector } from 'react-redux'
 import { useEffect, useRef, useState } from 'react'
 import { motion, useInView, useAnimation } from 'framer-motion';
+import { NavLink } from "react-router-dom";
 
 function Home() {
     const { theme, colors } = useSelector(state => state.theme);
-    const {light, black, } = colors;
+    const { language } = useSelector(state => state.language)
+    const { light, black, } = colors;
     const [color, setColor] = useState(light);
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true });
@@ -17,7 +19,7 @@ function Home() {
         if (isInView) {
             mainControls.start("visible")
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isInView]);
 
     useEffect(() => {
@@ -39,20 +41,20 @@ function Home() {
                 <section className={`${style.home} section ${theme ? style.light : ''}`} >
                     <div className={`${style.home__container} container grid`}>
                         <div className={style.home__data} >
-                            <span className={style.home__greeting}>{`Hello I'm`}</span>
+                            <span className={style.home__greeting}>{language === "spanish" ? `Hola, me llamo` : `Hello I'm`}</span>
                             <h1 className={style.home__name}>Alex Vaamonde</h1>
-                            <h3 className={style.home__education} >Web Developer</h3>
+                            <h3 className={style.home__education} >{language === "spanish" ? `Desarrollador Web` : `Web Developer`}</h3>
 
                             <div className={style.home__buttons}>
                                 <a download="" href="../../assets/CV.pdf" className={`button button__ghost`} >
-                                    Download CV
+                                    {language === "spanish" ? `Descargar CV` : `Download CV`}
                                 </a>
-                                <a href="#about" className={`button`}>About me</a>
+                                <NavLink to="/about" className={`button`}>{language === "spanish" ? `Acerca de mi` : `About me`} </NavLink>
                             </div>
                         </div>
 
                         <div className={style.home__handle}>
-                            <img src="/assets/Tbg2.png" alt="" className={style.home__img} />
+                            <img src="/assets/letterLogo.png" alt="" className={style.home__img} />
                         </div>
 
                         <div className={style.home__social}>

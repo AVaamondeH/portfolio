@@ -10,6 +10,7 @@ function Work__card({data}) {
     const { theme, colors } = useSelector(state => state.theme);
     const {white, black, } = colors
     const [color, setColor] = useState(white);
+    const { language } = useSelector(state => state.language);
     
     useEffect(() => {
         theme ? setColor(black) : setColor(white);
@@ -21,7 +22,7 @@ function Work__card({data}) {
                 <img src={img} alt="" className={style.work__img} />
                 <h3 className={style.work__title}>{title} </h3>
                 <a href={demo} className={style.work__button} target="_blank" rel="noreferrer">
-                    Preview <box-icon name='left-arrow-alt' size='sm' animation='fade-right' color={color} ></box-icon>
+                { language === "spanish" ? `Vista Previa` : `Preview` } <box-icon name='left-arrow-alt' size='sm' animation='fade-right' color={color} ></box-icon>
                 </a>
             </div>
         </>
