@@ -4,6 +4,7 @@ import "boxicons";
 import { useSelector } from 'react-redux'
 import { useEffect, useRef, useState } from 'react'
 import { motion, useInView, useAnimation } from 'framer-motion';
+import axios from "axios"
 
 
 function Contact() {
@@ -11,9 +12,22 @@ function Contact() {
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true });
     const mainControls = useAnimation();
-    const {white, black, } = colors
+    const { white, black, } = colors
     const [color, setColor] = useState(white);
     const { language } = useSelector(state => state.language)
+    const [form, setForm] = useState({
+        name: "",
+        email: "",
+        message: "",
+    });
+
+    const { name, email, message } = form;
+
+    const encode = (data) => {
+        return Object.keys(data)
+            .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+            .join("&");
+    }
 
     useEffect(() => {
         theme ? setColor(black) : setColor(white);
@@ -23,11 +37,25 @@ function Contact() {
         if (isInView) {
             mainControls.start("visible")
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isInView]);
 
-    const onSubmit = () => {
+    const handleChange = (event) => {
+        const { name, value } = event.target;
 
+        setForm({
+            ...form,
+            [name]: value,
+        })
+    }
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        await axios.post("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: encode({ "form-name": "contact", form })
+        })
     }
 
     return (
@@ -43,12 +71,12 @@ function Contact() {
                 transition={{ duration: 0.5, delay: 0.25, }}
             >
                 <section className={`${style.contact} section ${theme ? style.light : ''}`} >
-                    <span className={`section__subtitle`}> { language === "spanish" ? `Ponte en contacto conmigo` : `Get in touch` }</span>
-                    <h2 className={`section__title`}>    { language === "spanish" ? `Contactame` : `Contact Me` }</h2>
+                    <span className={`section__subtitle`}> {language === "spanish" ? `Ponte en contacto conmigo` : `Get in touch`}</span>
+                    <h2 className={`section__title`}>    {language === "spanish" ? `Contactame` : `Contact Me`}</h2>
 
                     <div className={`${style.contact__container} container grid`}>
                         <div className={style.contact__content}>
-                            <h3 className={style.contact__title}>    { language === "spanish" ? `Hablame` : `Talk to me` }</h3>
+                            <h3 className={style.contact__title}>    {language === "spanish" ? `Hablame` : `Talk to me`}</h3>
 
                             <div className={style.contact__info}>
                                 <div className={style.contact__card}>
@@ -56,7 +84,7 @@ function Contact() {
                                     <h3 className={style.contact__card__title}>Email</h3>
                                     <span className={style.contact__card__data}>Alexxherrera2772@gmail.com</span>
                                     <a href="mailto:alexxherrera2772@gmail.com" target="_blank" className={style.contact__button} rel="noreferrer">
-                                    { language === "spanish" ? `Escribeme` : `Write me` }
+                                        {language === "spanish" ? `Escribeme` : `Write me`}
                                         <box-icon name='left-arrow-alt' size='sm' animation='fade-right' color={color}></box-icon>
                                     </a>
                                 </div>
@@ -66,7 +94,7 @@ function Contact() {
                                     <h3 className={style.contact__card__title}>Whatsapp</h3>
                                     <span className={style.contact__card__data}>+593-98-295-4571</span>
                                     <a href="https://api.whatsapp.com/send?phone=+593982954571&text=Hello, more information!" target="_blank" className={style.contact__button} rel="noreferrer">
-                                    { language === "spanish" ? `Escribeme` : `Write me` }
+                                        {language === "spanish" ? `Escribeme` : `Write me`}
                                         <box-icon name='left-arrow-alt' size='sm' animation='fade-right' color={color}></box-icon>
                                     </a>
                                 </div>
@@ -74,25 +102,25 @@ function Contact() {
                         </div>
 
                         <div className={style.contact__content}>
-                            <h3 className={style.contact__title}>{ language === "spanish" ? `Cuentame lo que deseas realizar` : `Write me your project` }</h3>
+                            <h3 className={style.contact__title}>{language === "spanish" ? `Cuentame lo que deseas realizar` : `Write me your project`}</h3>
 
-                            <form action="" className={style.contact__form} name="contact" method="POST" data-netlify="true">
+                            <form className={style.contact__form} name="contact" onSubmit={handleSubmit}>
                                 <div className={style.contact__form__div}>
-                                    <label htmlFor="" className={style.contact__form__tag}>{ language === "spanish" ? `Nombres` : `Names` }</label>
-                                    <input name = "name" type="text" placeholder={ language === "spanish" ? `Escribe tu nombre` : `Insert your name` } className={style.contact__form__input} />
+                                    <label htmlFor="" className={style.contact__form__tag}>{language === "spanish" ? `Nombres` : `Names`}</label>
+                                    <input name="name" type="text" value={name} onChange={handleChange} placeholder={language === "spanish" ? `Escribe tu nombre` : `Insert your name`} className={style.contact__form__input} />
                                 </div>
 
                                 <div className={style.contact__form__div}>
-                                    <label htmlFor="" className={style.contact__form__tag}>{ language === "spanish" ? `Correo` : `Mail` }</label>
-                                    <input name = "email" type="email" placeholder={ language === "spanish" ? `Escribe tu correo` : `Insert your email` } className={style.contact__form__input} />
+                                    <label htmlFor="" className={style.contact__form__tag}>{language === "spanish" ? `Correo` : `Mail`}</label>
+                                    <input name="email" type="email" value={email} onChange={handleChange} placeholder={language === "spanish" ? `Escribe tu correo` : `Insert your email`} className={style.contact__form__input} />
                                 </div>
 
                                 <div className={`${style.contact__form__div} ${style.contact__form__area}`}>
                                     <label htmlFor="" className={style.contact__form__tag}>Project</label>
-                                    <textarea name = "message" cols={"30"} rows={"10"} placeholder={ language === "spanish" ? `Cuentame tu proyecto` : `Write me}"` } className={style.contact__form__input} />
+                                    <textarea name="message" cols={"30"} rows={"10"} value={message} onChange={handleChange} placeholder={language === "spanish" ? `Cuentame tu proyecto` : `Write me`} className={style.contact__form__input} />
                                 </div>
 
-                                <button type="submit" className={`button`} onSubmit={onSubmit}>{ language === "spanish" ? `Enviar Mensaje` : `Send Message` }</button>
+                                <button type="submit" className={`button`}>{language === "spanish" ? `Enviar Mensaje` : `Send Message`}</button>
                             </form>
                         </div>
                     </div>
