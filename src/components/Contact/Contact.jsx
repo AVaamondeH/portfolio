@@ -34,6 +34,12 @@ function Contact() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isInView]);
 
+    const encode = (data) => {
+        return Object.keys(data)
+            .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+            .join("&");
+    }
+
     const handleChange = (event) => {
         const { name, value } = event.target;
 
@@ -45,8 +51,14 @@ function Contact() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await axios.post("/", form)
-        
+        fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: encode({ "form-name": "contact", form })
+        })
+            .then(() => alert("Success!"))
+            .catch(error => alert(error));
+
     }
 
     return (
