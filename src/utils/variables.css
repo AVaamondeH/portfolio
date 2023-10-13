@@ -11,6 +11,7 @@
         blue: hsl(207,90%, 72%)
         pink: hsl(356,66%,75%)
         teal: hsl(174, 63%, 62%)
+        
     */
 
 
@@ -21,6 +22,7 @@
 
     --first-color: hsl(var(--first-hue), var(--sat), var(--lig));
     --first-color-alt: hsl(var(--first-hue), var(--sat), 71%);
+    --second-color: hsl(267, 54%, 28%);
     --title-color: hsl(var(--second-hue), 15%, 95%);
     --text-color: hsl(var(--second-hue), 8%, 75%);
     --text-color-light: hsl(var(--second-hue), 4%, 55%);
@@ -60,3 +62,9 @@
     }
 }
 
+body.light {
+    --title-color: hsl(var(--second-hue), 15%, 15%);
+    --text-color: hsl(var(--second-hue), 8%, 35%);
+    --body-color: hsl(var(--second-hue), 100%, 99%);
+    --container-color: #fff;
+}

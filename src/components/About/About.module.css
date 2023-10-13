@@ -3,7 +3,6 @@
 .about__container {
     row-gap: 2.5rem;
 }
-
 .about__img {
     width: 220px;
     border-radius: 1.5rem;
@@ -24,8 +23,9 @@
 .about__box {
     background-color: var(--container-color);
     border-radius: .75rem;
-    padding: .75rem 5rem;
-}
+    padding: .75rem .5rem;
+    transition: .4s;
+} 
 
 .about__icon {
     font-size: 1.5rem;
@@ -41,4 +41,73 @@
 
 .about__description {
     margin-bottom: 2rem;
+    text-align: justify;
 }
+
+/*============= LIGHT THEME ============= */ 
+
+.light .about__box {
+    box-shadow: 0 2px 8px hsla(var(--second-hue), 48%, 8%, .1);
+}
+
+/*============= BREAKPOINTS ============= */ 
+    /*============= Small divices ============= */ 
+    @media screen and (max-width: 320px){
+        .about__info {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .about__description {
+            text-align: justify;
+        }
+
+        .about__container {
+            margin-bottom: 4rem;
+        }
+    }
+    /*============= medium divices ============= */
+    @media screen and (min-width: 576px) {
+        .about__info {
+            grid-template-columns: repeat(3, 140px);
+            justify-content: center;
+        }
+
+        .about__description {
+            padding:  0 4rem;
+            text-align: justify;
+        }
+
+        .about__container {
+            margin-bottom: 4.3rem;
+        }
+    }
+    /*============= Large divices ============= */
+    @media screen and (min-width: 992px) {
+        .about__container {
+            margin-top: 4rem;
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+            column-gap: 4rem;
+        }
+
+        .about__img {
+            width: 310px;
+        }
+
+        .about__data {
+            text-align: initial;
+        }
+
+        .about__info {
+            justify-content: initial;
+        }
+
+        .about__box {
+            text-align: center;
+            padding: 1rem 1.25rem;
+        }
+
+        .about__description {
+            padding: 0 1rem 0 0;
+        }
+    }

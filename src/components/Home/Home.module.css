@@ -1,9 +1,9 @@
 @import url("../../utils/variables.css");
 
 .home__container {
-position: relative;
-row-gap: 4.5rem;
-padding-top: 2rem;
+    position: relative;
+    row-gap: 2.5rem;
+    padding-top: 2rem;
 }
 
 .home__data {
@@ -32,21 +32,16 @@ padding-top: 2rem;
 }
 
 .home__img {
-    width: 160px;
+    width: 220px;
 }
 
 .home__handle {
     justify-self: center;
     width: 190px;
     height: 293px;
-    background: linear-gradient(180deg,
-    hsla(var(--first-hue), var(--sat), var(--lig), 1),
-    hsla(var(--first-hue), var(--sat), var(--lig), .2)
-    );
-    border-radius: 10rem 10rem 1rem 1rem;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     overflow: hidden;
 }
 
@@ -54,7 +49,7 @@ padding-top: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1.5rem
+    gap: 1.5rem;
 }
 
 .home__social {
@@ -65,7 +60,7 @@ padding-top: 2rem;
     row-gap: .5rem;
 }
 
-.home__social__link{
+.home__social__link {
     width: max-content;
     background-color: var(--container-color);
     color: var(--first-color);
@@ -73,17 +68,83 @@ padding-top: 2rem;
     border-radius: .25rem;
     display: flex;
     font-size: 1rem;
+    transition: .4s;
 }
 
 .home__social__link:hover {
-    background-color: var(--first-color-alt);
-    color: #fff;
+    background-color: var(--second-color);
 }
 
 .home__social::after {
     content: "";
-    width: 32px;
-    height: 2px;
+    width: 72px;
+    height: 3px;
     background-color: var(--first-color);
-    transform: rotate(90deg) translate(16px, -5px);
+    transform: rotate(90deg) translate(36px, 13px);
+}
+
+/*============= LIGHT THEME ============= */
+
+.light .home__social__link {
+    box-shadow: 0 2px 8px hsla(var(--second-hue), 48%, 8%, .1);
+}
+
+.light .home__social__link:hover {
+    background-color: var(--first-color);
+}
+
+.light .home__social::after {
+    background-color: var(--title-color);
+}
+
+/*============= BREAKPOINTS ============= */
+/*============= Small divices ============= */
+@media screen and (max-width: 320px) {
+    .home__buttons {
+        flex-direction: column;
+    }
+
+    .home__handle {
+        width: 140px;
+        height: 246px;
+    }
+
+    .home__img {
+        width: 140px;
+    }
+
+    .home__container {
+        padding-top: .5rem;
+        row-gap: 1.5rem;
+    }
+
+    .home__education {
+        margin-bottom: 1rem;
+    }
+}
+
+/*============= medium divices ============= */
+@media screen and (min-width: 576px) {}
+
+/*============= Large divices ============= */
+@media screen and (min-width: 992px) {
+    .home__handle {
+        width: 580px;
+        height: 450px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .home__img {
+        width: 510px;
+    }
+
+    .home__social__link {
+        padding: .4rem;
+        font-size: 1.25rem;
+    }
+
+    .home__social::after {
+        transform: rotate(90deg) translate(36px, 13px);
+    }
 }
