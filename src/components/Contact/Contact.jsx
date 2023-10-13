@@ -35,12 +35,7 @@ function Contact() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isInView]);
 
-    const encode = (data) => {
-        return Object.keys(data)
-            .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-            .join("&");
-    }
-
+    
     const handleChange = (event) => {
         const { name, value } = event.target;
 
@@ -49,14 +44,34 @@ function Contact() {
             [name]: value,
         })
     }
-
+    
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await axios.post("/", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: encode({ "form-name": "contact", form })
-        })
+        const encode = (data) => {
+            return Object.keys(data)
+                .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+                .join("&");
+        }
+        const formData = {
+            "form-name": "contact",
+            name,
+            email,
+            message
+        };
+        const encodedData = encode(formData);
+        console.log(encodedData);
+        try {
+            const response = await axios.post("/", encodedData, {
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                }
+            });
+    
+            console.log("Respuesta:", response.data);
+        } catch (error) {
+
+            console.error("Error al enviar el formulario:", error);
+        }
     }
 
     return (
@@ -108,7 +123,7 @@ function Contact() {
                             <form className={style.contact__form} name="contact" onSubmit={handleSubmit} netlify>
                                 <div className={style.contact__form__div}>
                                     <label htmlFor="" className={style.contact__form__tag}>{language === "spanish" ? `Nombres` : `Names`}</label>
-                                    <input name="name" type="hidden" value={name} onChange={handleChange} placeholder={language === "spanish" ? `Escribe tu nombre` : `Insert your name`} className={style.contact__form__input} />
+                                    <input name="name" type="text" value={name} onChange={handleChange} placeholder={language === "spanish" ? `Escribe tu nombre` : `Insert your name`} className={style.contact__form__input} />
                                 </div>
 
                                 <div className={style.contact__form__div}>
