@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import style from "./Contact.module.css";
 import "../../utils/Reusable__Classes.css";
 import "boxicons";
@@ -51,7 +52,7 @@ function Contact() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        fetch("/", {
+        await fetch("/", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: encode({ "form-name": "contact", form })
@@ -107,7 +108,7 @@ function Contact() {
                         <div className={style.contact__content}>
                             <h3 className={style.contact__title}>{language === "spanish" ? `Cuentame lo que deseas realizar` : `Write me your project`}</h3>
 
-                            <form className={style.contact__form} name="contact" onSubmit={handleSubmit} data-netlify="true">
+                            <form className={style.contact__form} name="contact" onSubmit={handleSubmit} netlify>
                                 <div className={style.contact__form__div}>
                                     <label htmlFor="" className={style.contact__form__tag}>{language === "spanish" ? `Nombres` : `Names`}</label>
                                     <input name="name" type="text" value={name} onChange={handleChange} placeholder={language === "spanish" ? `Escribe tu nombre` : `Insert your name`} className={style.contact__form__input} />
