@@ -52,7 +52,7 @@ function Work() {
                             filter === "all" &&
                             <>
                                 <Work__card data={{ title: "SELPRO Soluciones", img: "/assets/selpro.png", demo: "https://youtu.be/YxAw-3iM8s4", }} />
-                                <Work__card data={{ title: "Countries", img: "/assets/countries.png", demo: "https://youtu.be/I9ZA3nBoMCE", }} />
+                                <Work__card data={{ title: "Countries", img: "/assets/countries.png", demo: "https://countries-alexiodev.netlify.app/", }} />
                                 <Work__card data={{ title: "Rick and Morty", img: "/assets/R&M.png", demo: "https://youtu.be/tpbGX-p-fvY", }} />
                                 <Work__card data={{ title: "Tindog", img: "/assets/tindog.png", demo: "https://thelordaa.github.io/tindog-landind-page-test/", }} />
                                 <Work__card data={{ title: "Losangeles Mountains", img: "/assets/losangeles.png", demo: "https://github.com/AVaamondeH/LOSANGELES-MOUNTAINS", }} />
@@ -62,7 +62,7 @@ function Work() {
                         {filter === "app" &&
                             <>
                                 <Work__card data={{ title: "SELPRO Soluciones", img: "/assets/selpro.png", demo: "https://youtu.be/YxAw-3iM8s4", }} />
-                                <Work__card data={{ title: "Countries", img: "/assets/countries.png", demo: "https://youtu.be/I9ZA3nBoMCE", }} />
+                                <Work__card data={{ title: "Countries", img: "/assets/countries.png", demo: "https://countries-alexiodev.netlify.app/", }} />
                                 <Work__card data={{ title: "Rick and Morty", img: "/assets/R&M.png", demo: "https://youtu.be/tpbGX-p-fvY", }} />
                             </>
                         }

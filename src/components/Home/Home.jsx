@@ -46,7 +46,7 @@ function Home() {
                             <h3 className={style.home__education} >{language === "spanish" ? `Desarrollador Web` : `Web Developer`}</h3>
 
                             <div className={style.home__buttons}>
-                                <a download="" href={language === "spanish" ? `/assets/Alex_Vaamonde_Developer_spa` : `/assets/Alex_Vaamonde_Developer`} className={`button button__ghost`} >
+                                <a download="" href={language === "spanish" ? `/assets/Alex_Vaamonde_Developer_spa.pdf` : `/assets/Alex_Vaamonde_Developer.pdf`} className={`button button__ghost`} >
                                     {language === "spanish" ? `Descargar CV` : `Download CV`}
                                 </a>
                                 <NavLink to="/about" className={`button`}>{language === "spanish" ? `Acerca de mi` : `About me`} </NavLink>
