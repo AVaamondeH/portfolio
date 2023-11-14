@@ -38,19 +38,20 @@ function Work() {
                 transition={{ duration: 0.5, delay: 0.25, }}
             >
                 <section className={`${style.work} section ${theme ? style.light : ''}`} >
-                    <span className={`section__subtitle`}>{ language === "spanish" ? `Mi Portafolio` : `My Portfolio` }</span>
-                    <h2 className={`section__title`}>{ language === "spanish" ? `Trabajos Recientes` : `Recent Works` }</h2>
+                    <span className={`section__subtitle`}>{language === "spanish" ? `Mi Portafolio` : `My Portfolio`}</span>
+                    <h2 className={`section__title`}>{language === "spanish" ? `Trabajos Recientes` : `Recent Works`}</h2>
 
                     <div className={style.work__filters}>
-                        <span id="all" onClick={() => onClick("all")} className={`${style.work__item} ${filter === 'all' ? style.active__work : ''}`}>{ language === "spanish" ? `Todo` : `All` }</span>
-                        <span onClick={() => onClick("app")} className={`${style.work__item} ${filter === 'app' ? style.active__work : ''}`}>{ language === "spanish" ? `Aplicacion Web` : `Web App` }</span>
-                        <span onClick={() => onClick("temp")} className={`${style.work__item} ${filter === 'temp' ? style.active__work : ''}`}>{ language === "spanish" ? `Plantilla Web` : `Web Template` }</span>
+                        <span id="all" onClick={() => onClick("all")} className={`${style.work__item} ${filter === 'all' ? style.active__work : ''}`}>{language === "spanish" ? `Todo` : `All`}</span>
+                        <span onClick={() => onClick("app")} className={`${style.work__item} ${filter === 'app' ? style.active__work : ''}`}>{language === "spanish" ? `Aplicacion Web` : `Web App`}</span>
+                        <span onClick={() => onClick("temp")} className={`${style.work__item} ${filter === 'temp' ? style.active__work : ''}`}>{language === "spanish" ? `Plantilla Web` : `Web Template`}</span>
                     </div>
 
                     <div className={`${style.work__container} container grid`}>
                         {
                             filter === "all" &&
                             <>
+                                <Work__card data={{ title: "EVOGYM", img: "/assets/evogym.png", demo: "https://gym-template.pages.dev", }} />
                                 <Work__card data={{ title: "SELPRO Soluciones", img: "/assets/selpro.png", demo: "https://youtu.be/YxAw-3iM8s4", }} />
                                 <Work__card data={{ title: "Countries", img: "/assets/countries.png", demo: "https://countries-alexiodev.netlify.app/", }} />
                                 <Work__card data={{ title: "Rick and Morty", img: "/assets/R&M.png", demo: "https://youtu.be/tpbGX-p-fvY", }} />
@@ -68,6 +69,7 @@ function Work() {
                         }
                         {filter === "temp" &&
                             <>
+                                <Work__card data={{ title: "EVOGYM", img: "/assets/evogym.png", demo: "https://gym-template.pages.dev", }} />
                                 <Work__card data={{ title: "Tindog", img: "/assets/tindog.png", demo: "https://thelordaa.github.io/tindog-landind-page-test/", }} />
                                 <Work__card data={{ title: "Losangeles Mountains", img: "/assets/losangeles.png", demo: "https://github.com/AVaamondeH/LOSANGELES-MOUNTAINS", }} />
                                 <Work__card data={{ title: "HOMELOAN GURUS Landing Page", img: "/assets/homeloan.png", demo: "https://thelordaa.github.io/Landing-Website-Test/", }} />
